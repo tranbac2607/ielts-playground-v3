@@ -90,7 +90,7 @@ h6 {
   border-radius: 10px;
 }
 
-.page-container {
+.exam-container {
   width: calc(100vw - 40px);
   max-width: 1600px;
   padding: 15px 20px 0;

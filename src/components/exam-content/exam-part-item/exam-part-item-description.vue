@@ -15,10 +15,10 @@ defineProps<{
 <template>
   <div class="part-description-container">
     <h1 class="part-content">
-      <div v-if="isWriting">Academic Writing Part {partActive}</div>
+      <div v-if="isWriting">Academic Writing Part {{ partActive }}</div>
       <div v-else>
         Part {{ partActive }}
-        {{ isReading && `: Reading passage ${partActive}` }}
+        {{ isReading ? `: Reading passage ${partActive}` : '' }}
       </div>
     </h1>
     <p class="part-description">
@@ -38,3 +38,27 @@ defineProps<{
     </p>
   </div>
 </template>
+
+<style scoped lang="scss">
+.part-description-container {
+  background-color: $background-secondary;
+  border-radius: 6px;
+  box-shadow: $box-shadow-primary;
+  margin-bottom: 8px;
+  min-height: 80px;
+  height: $height-part-description;
+  padding: 20px;
+  margin-bottom: 10px;
+
+  .part-content {
+    font-size: 28px;
+    margin: 0;
+  }
+
+  .part-description {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+}
+</style>

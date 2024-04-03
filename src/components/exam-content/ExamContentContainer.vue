@@ -21,7 +21,7 @@ const numericalOrderInPart = ref<NumericalOrder>({
 });
 
 const listQuestionInPart = computed(() => {
-  return props.listQuestion.filter((item) => item.part === 1 || item.part === 1);
+  return props.listQuestion.filter((item) => item.part === partActive.value || item.part === 1);
 });
 
 const listQuestionTypeInPart = computed(() => {
@@ -54,22 +54,24 @@ watch(
 </script>
 
 <template>
-  <ExamPartItemDescription
-    isListening
-    :partActive="partActive"
-    :numericalOrderInPart="numericalOrderInPart"
-  />
+  <div class="exam-container">
+    <ExamPartItemDescription
+      isListening
+      :partActive="partActive"
+      :numericalOrderInPart="numericalOrderInPart"
+    />
 
-  <MainExamContent
-    isListening
-    :listQuestionInPart="listQuestionInPart"
-    :listQuestionTypeInPart="listQuestionTypeInPart"
-    :leftContent="[]"
-  />
+    <MainExamContent
+      isListening
+      :listQuestionInPart="listQuestionInPart"
+      :listQuestionTypeInPart="listQuestionTypeInPart"
+      :leftContent="[]"
+    />
 
-  <QuestionNavigator
-    :listQuestion="listQuestion"
-    :questionActive="questionActive"
-    :isReview="isReview"
-  />
+    <QuestionNavigator
+      :listQuestion="listQuestion"
+      :questionActive="questionActive"
+      :isReview="isReview"
+    />
+  </div>
 </template>

@@ -18,7 +18,6 @@ import Loading from '../common/Loading.vue';
 .main-container,
 .main-container-init {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: calc(100vh - $header-outer-height);
