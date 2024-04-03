@@ -1,9 +1,10 @@
 import api from '@/api';
 import { BaseResponse, LoginType, RegisterType, VerifyEmailRequest } from './models';
+import { LOGIN, REGISTER } from './endpoint';
 
 export const registerApi = async (payload: RegisterType) => {
   try {
-    const res = await api.post('api/v2/users/register', { ...payload });
+    const res = await api.post(REGISTER, { ...payload });
     return res.data;
   } catch (error) {
     console.log(error);
@@ -13,13 +14,13 @@ export const registerApi = async (payload: RegisterType) => {
 
 export const loginApi = async (payload: LoginType) => {
   try {
-    const res = await api.post('/api/v2/users/authenticate', {
+    const res = await api.post(LOGIN, {
       ...payload,
     });
-    return res.data;
+    return res as any;
   } catch (error) {
     console.log(error);
-    return false;
+    return undefined;
   }
 };
 

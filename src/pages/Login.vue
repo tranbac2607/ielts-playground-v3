@@ -1,28 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { useToast } from 'vue-toastification';
+
 import Login from '../components/Login.vue';
 
-import { registerApi } from '../services/auth';
+import { loginApi } from '../services/auth';
+import { LoginValues } from '../components/models';
+import { CODE_SUCCESS } from '../constants';
 
-const isLoading = ref(false);
+const toast = useToast();
 
-const handleSubmit = async (values: any) => {
-  console.log(values);
-  isLoading.value = true;
-  const res = await registerApi({ ...values, subscription: 'FREE' });
-  console.log(res);
+const handleLogin = async (values: LoginValues) => {
+  const res = await loginApi({ ...values });
+  console.log('🚀 ~ handleLogin ~ res:', res);
 
-  // if (res.code === CODE_SUCCESS) {
-  //   router.push('/verify');
-  //   notify('success', 'Register successfully, please verify!');
-  //   dispatch(setEmailVerify(values.email));
-  // } else {
-  //   notify('error', 'Something error!');
-  // }
-  isLoading.value = false;
+  if (res?.code === CODE_SUCCESS) {
+    toast.success('Login successfully');
+    // dispatch(setEmailVerify(values.email));
+  } else {
+    toast.error('Email or password is incorrect');
+  }
 };
 </script>
 
 <template>
-  <Login @onSubmit="handleSubmit" />
+  <Login @onLogin="handleLogin" />
 </template>
