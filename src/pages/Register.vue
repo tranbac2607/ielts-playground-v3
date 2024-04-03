@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import Register from '../components/Register.vue';
+import Register from '../components/register.vue';
 
 import { registerApi } from '../services/auth';
 import { RegisterValues } from '../components/models';

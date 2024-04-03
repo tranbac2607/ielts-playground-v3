@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useToast } from 'vue-toastification';
 
-import Login from '../components/Login.vue';
+import Login from '../components/login.vue';
 
 import { loginApi } from '../services/auth';
 import { LoginValues } from '../components/models';

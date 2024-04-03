@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Fragment, defineEmits, defineProps, h } from 'vue';
 
-import AnswerInputs from './AnswerInputs.vue';
+import AnswerInputs from './answer-inputs.vue';
 
 import { DataContentType } from './models';
 import { QUESTION_TYPE } from './constants';

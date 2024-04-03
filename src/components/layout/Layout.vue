@@ -2,7 +2,7 @@
 import { useCommonStore } from '@/stores/common';
 const commonStore = useCommonStore();
 
-import Header from './Header.vue';
+import Header from './header.vue';
 import Loading from '../common/Loading.vue';
 </script>
 

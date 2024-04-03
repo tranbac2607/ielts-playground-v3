@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import HomeView from '../pages/HomeView.vue';
-import RegisterPage from '../pages/Register.vue';
-import LoginPage from '../pages/Login.vue';
+import RegisterPage from '../pages/register.vue';
+import LoginPage from '../pages/login.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/listening',
     name: 'listening',
-    component: () => import('../pages/Listening.vue'),
+    component: () => import('../pages/listening.vue'),
   },
 ];
 

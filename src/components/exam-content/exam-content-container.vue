@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, defineProps, ref, watch } from 'vue';
 
-import MainExamContent from './MainExamContent.vue';
-import QuestionNavigator from './QuestionNavigator.vue';
+import MainExamContent from './main-exam-content.vue';
+import QuestionNavigator from './question-navigator.vue';
 import ExamPartItemDescription from '../exam-content/exam-part-item/exam-part-item-description.vue';
 
 import { DataContentType, NumericalOrder, TypeQuestionType } from './models';

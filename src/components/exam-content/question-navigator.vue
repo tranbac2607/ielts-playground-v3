@@ -2,7 +2,7 @@
 import { computed, defineEmits, defineProps } from 'vue';
 
 import { DataContentType } from './models';
-import useHandleChangeListQuestion from './useHandleChangeListQuestion';
+import useHandleChangeListQuestion from './use-handle-change-list-question';
 
 const props = defineProps<{
   listQuestion: DataContentType[];
@@ -28,14 +28,14 @@ const numberOfPart = computed(() => {
 <template>
   <div class="navigator-question-container">
     <div class="review-container">
-      <label class="container review-title">
+      <label class="d-flex gap-1">
         <input
           type="checkbox"
           :checked="isReview"
           @change="(event: any) => emit('onChangeReviewQuestion', event.target.checked)"
         />
         <span class="checkmark"></span>
-        Review
+        <span>Review</span>
       </label>
     </div>
     <div class="list-part-container">
@@ -89,14 +89,16 @@ const numberOfPart = computed(() => {
     display: block;
     position: relative;
     font-size: 16px;
-    padding-left: 28px;
     margin-bottom: 12px;
-    cursor: pointer;
     font-size: 16px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
+    label {
+      cursor: pointer;
+    }
   }
 
   .list-part-container {
