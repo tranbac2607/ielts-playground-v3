@@ -15,12 +15,14 @@ const props = defineProps<{
   leftContent: string[];
 }>();
 
+console.log(props.listQuestionTypeInPart);
+
 const renderContent = (type: string, numberOrder: number) => {
   switch (type) {
     case QUESTION_TYPE.LISTENING_CHOOSE_ANSWER:
       return h(AnswerInputs, { listQuestion: props.listQuestionInPart, numberOrder });
     default:
-      return 'Testt';
+      return 'Test';
   }
 };
 
@@ -36,8 +38,12 @@ const emit = defineEmits<{
   >
     <div v-if="isListening" class="listening-content">
       <div v-if="listQuestionTypeInPart.length">
-        <div v-for="(_, index) in listQuestionTypeInPart" :key="index">
-          <AnswerInputs :listQuestion="listQuestionInPart" :numberOrder="index + 1" />
+        <div v-for="(item, index) in listQuestionTypeInPart" :key="index">
+          <AnswerInputs
+            v-if="item === QUESTION_TYPE.ANSWER_PARAGRAPH_LISTENING"
+            :listQuestion="listQuestionInPart"
+            :numberOrder="index + 1"
+          />
         </div>
       </div>
     </div>

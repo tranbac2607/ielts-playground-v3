@@ -17,8 +17,16 @@ onBeforeMount(() => {
   };
   getData();
 });
+
+const handleChangeListQuestion = (newListQuestion: DataContentType[]) => {
+  listQuestion.value = newListQuestion;
+};
 </script>
 
 <template>
-  <ExamContentContainer :listQuestion="listQuestion" :listTypeQuestion="listTypeQuestion" />
+  <ExamContentContainer
+    :listQuestion="listQuestion"
+    :listTypeQuestion="listTypeQuestion"
+    @onChangeListQuestion="handleChangeListQuestion"
+  />
 </template>

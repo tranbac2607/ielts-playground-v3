@@ -10,13 +10,13 @@ const props = defineProps<{
   isReview: boolean;
 }>();
 
-const { getQuestionActive } = useHandleChangeListQuestion();
-
 const emit = defineEmits<{
-  (e: 'onChangeReviewQuestion', values: boolean): void;
+  (e: 'onChangeReviewQuestion', isChecked: boolean): void;
   (e: 'onSetQuestionActive', questionSubId: number, partActiveBar: number): void;
-  (e: 'onChangeReviewQuestion', questionId: number): void;
+  (e: 'onSelectPrevOrNextQuestion', questionId: number): void;
 }>();
+
+const { getQuestionActive } = useHandleChangeListQuestion();
 
 const numberOfPart = computed(() => {
   const partLastNumber = props.listQuestion[props.listQuestion?.length - 1]?.part;
@@ -62,9 +62,9 @@ const numberOfPart = computed(() => {
     <div class="list-feature-button">
       <button
         class="button-feature button-previous"
-        :class="{ 'button-prev__disable': questionActive === 1 }"
+        :class="{ 'button-prev__disable': questionActive === listQuestion[0].id }"
         @click="
-          emit('onChangeReviewQuestion', getQuestionActive(listQuestion, questionActive, false))
+          emit('onSelectPrevOrNextQuestion', getQuestionActive(listQuestion, questionActive, false))
         "
       ></button>
       <button
@@ -72,7 +72,7 @@ const numberOfPart = computed(() => {
         :class="{
           'button-next__disable': questionActive === listQuestion[listQuestion.length - 1]?.id,
         }"
-        @click="emit('onChangeReviewQuestion', getQuestionActive(listQuestion, questionActive))"
+        @click="emit('onSelectPrevOrNextQuestion', getQuestionActive(listQuestion, questionActive))"
       ></button>
     </div>
   </div>
@@ -84,13 +84,12 @@ const numberOfPart = computed(() => {
   align-items: center;
   justify-content: space-between;
   height: 80px;
-  // background-color: $background-primary;
+
   .review-container {
     display: block;
     position: relative;
     font-size: 16px;
     margin-bottom: 12px;
-    font-size: 16px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -144,16 +143,16 @@ const numberOfPart = computed(() => {
         border: none;
 
         &:hover {
-          background-color: $background-primary;
+          background-color: $button-navigate-hover-color;
         }
       }
 
       .question__active {
-        background-color: $background-primary !important;
+        background-color: $button-navigate-hover-color !important;
         color: $color-white !important;
 
         &:hover {
-          background-color: $background-primary !important;
+          background-color: $button-navigate-hover-color !important;
         }
       }
 
@@ -187,8 +186,6 @@ const numberOfPart = computed(() => {
       height: 60px;
       border-radius: 50%;
       background-size: 100%;
-      width: 50px;
-      height: 50px;
       border: none;
       cursor: pointer;
     }
